@@ -5,8 +5,21 @@ import os
 """
    滤波算法主要包括： 均值滤波，高斯滤波，中值滤波和双边滤波
 """
-img_path = "..//data//nao.jpg"
+def cvshow(name, img):
+    cv2.imshow(name, img)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+img_path = "../data/cat.jpg"
 img = cv2.imread(img_path)
+cvshow("img", img)
+
+# 均值滤波
+img_blur = cv2.blur(img, (5, 5))
+cv2.imshow("img_blur", img_blur)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
 
 
 def GaussianBlur():
@@ -19,11 +32,6 @@ def GaussianBlur():
       ——sigmaX X方向上的高斯核标准偏差。
       ——sigmaY Y方向上的高斯核标准差；如果sigmaY为零，则将其设置为等于sigmaX；如果两个sigmas为零，则分别从ksize.width和ksize.height计算得出；为了完全控制结果，而不管将来可能对所有这些语义进行的修改，建议指定所有ksize，sigmaX和sigmaY。
    """
-   
-cv2.imshow("SrcImg", img)
-cv2.waitKey(0)
 
-img_blur = cv2.GaussianBlur(img, (5, 5), 0)
 
-cv2.imshow("img_blur", img_blur)
-cv2.waitKey(0)
+
